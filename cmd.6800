@@ -197,3 +197,50 @@ c++ and c
     }
     #endif
 -----------------------------------------
+strong symbol
+    function define
+    inited-global define 
+weak symbol
+    not inited-global define 
+modify strong-2-weak
+__attrbute__((weak)) weak2 = 2
+-----------
+rule:
+    strong symbol not allowed multi define 
+    select strong symbol from strong/weak symbol
+    select max-storage symbol from full weak symbols
+-----------------------------------------
+strong reference
+    symbol-define not found, link error
+weak reference
+    symbol-define not found, link ok
+-----------
+__attrbute__((weakref)) void foo();
+int main()
+{
+    if (foo) foo();
+}
+-----------------------------------------
+weak-symbol and weak-ref useage:
+    define weak symbol in lib, in case user-define strong-symbol
+    define extended module by weak-ref
+-----------------------------------------
+g++ -g
+    debug-section 
+        DWARF
+        CodeView 
+-----------------------------------------
+strip
+-----------------------------------------
+gcc -v
+-lpthread
+    old enougle 
+-pthread
+    new, -D_REENTRANT -lpthread
+-----------------------------------------
+gcc pthread.c -o pt 
+gcc pthread.c -pthread -o pt 
+-----------
+gcc weak_ref.c -o weak_ref 
+gcc weak_ref.c foo.c -o weak_ref
+-----------------------------------------
