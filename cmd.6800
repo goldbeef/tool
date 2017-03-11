@@ -58,22 +58,9 @@ executale/object
 objdump -h object.file 
     ELF HEADER 
     .text 
-    .data
-    .bss
+    .data 
     .rodata
     .comment
-    .rodata1
-    .debug
-    .hash
-    .line
-    .note
-    .strtab
-    .symtab
-    .shstrtab
-    .plt
-    .got
-    .init
-    .fini
-object -x -s -d object.file 
+    .other
 size object.file 
 

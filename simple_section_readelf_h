@@ -1,0 +1,20 @@
+ELF 头：
+  Magic：   7f 45 4c 46 01 01 01 00 00 00 00 00 00 00 00 00 
+  类别:                              ELF32
+  数据:                              2 补码，小端序 (little endian)
+  版本:                              1 (current)
+  OS/ABI:                            UNIX - System V
+  ABI 版本:                          0
+  类型:                              REL (可重定位文件)
+  系统架构:                          Intel 80386
+  版本:                              0x1
+  入口点地址：               0x0
+  程序头起点：          0 (bytes into file)
+  Start of section headers:          384 (bytes into file)
+  标志：             0x0
+  本头的大小：       52 (字节)
+  程序头大小：       0 (字节)
+  Number of program headers:         0
+  节头大小：         40 (字节)
+  节头数量：         14
+  字符串表索引节头： 11

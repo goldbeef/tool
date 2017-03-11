@@ -3,6 +3,8 @@
 int global_init_val = 84;
 int global_uninit_val;
 
+__attribute__((section("foo"))) int global = 42;
+
 void func1(int i)
 {
     printf("%d\n", i);
