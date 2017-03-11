@@ -28,3 +28,39 @@ linker
     内存分配
     重定位
 -----------------------------------------
+COFF 
+    PE-COFF (windows)
+    ELF (linux)
+    ----------- 
+    ELF file type
+        relocate file: .o
+        executale file: ls
+        shared object file: .so
+        core dump file: linux core-dump file 
+    -----------
+    file bash
+    file hello.o
+    file /lib/i386-linux-gnu/libz.so.1.2.8
+    -----------
+-----------------------------------------
+executale/object 
+    file formt
+        FILE HEADER
+        .text section
+        .data section
+        .bss  section
+    -----------
+    分为text section和 data section的优点：
+        对text section的保护
+        提高cpu cache hit ratio
+        对text section的共享， 减少内存
+-----------------------------------------
+objdump -h object.file 
+    ELF HEADER 
+    .text 
+    .data 
+    .rodata
+    .comment
+    .other
+size object.file 
+
