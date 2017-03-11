@@ -56,11 +56,144 @@ executale/object
         对text section的共享， 减少内存
 -----------------------------------------
 objdump -h object.file 
+objdump -x -d -s object.file 
     ELF HEADER 
     .text 
-    .data 
+    .data
+    .bss
     .rodata
     .comment
-    .other
+    .debug
+    .dynamic
+    .hash
+    .line
+    .note
+    .strtab
+    .symtab
+    .shstrtab
+    .plt
+    .got
+    .init
+    .fini
 size object.file 
+-----------------------------------------
+objcopy
+-----------------------------------------
+__attrbute__((section("foo"))) int global = 42;
+-----------------------------------------
+ELF-HEADER
+    readelf -h elf.file
+    /usr/include/elf.h 
+        Elf32_Ehdr
+        Elf64_Ehdr
+            e_ident: elf-magic
+            e_type: 
+                et_rel
+                et_exec
+                ec_dyn
+            e_machine:
+-----------------------------------------
+ELF-SECTION-HEADER_TABLE
+    readelf -s elf.file
+    /usr/include/elf.h 
+        Elf32_Shdr 
+        Elf64_Shdr
+            sh_type:
+                SHT_NULL
+                SHT_PROGBIT
+                SHT_SYMTAB
+                ...
+            sh_flag:
+                SHF_WRITE
+                SHF_ALLOC
+                SHF_EXECINSTR
+            sh_name:
+                .bss
+                .comment
+                .data 
+                ...
+            sh_link:
+            sh_info:
+-----------------------------------------
+ELF-RELOCATION-TABLE
+    .rel.text
+    SHT_REL
+ELF-STRING-TABLE
+    .strtab, .shstrtab
+-----------------------------------------
+symbol name
+symbol value
+symbol table
 
+nm elf.file
+-----------------------------------------
+ELF-SYM-TABLE
+    readelf -s elf.file
+    .symtab
+    Elf32_Sym
+    Elf64_Sym 
+        st_name
+        st_value
+            offset
+            SHN_COMMON
+            virtual-addr in executale elf.file
+        st_shndx
+            section-indx
+            special-const
+                SHN_ABS
+                SHN_COMMON
+                SHN_UNDEF
+        st_info
+            type
+                STB_LOCAL
+                STB_GLOBAL
+                STB_WEAK
+            bind
+                STT_NOTYPE
+                STT_OBJECT
+                STT_FUNC
+                STT_SECTION
+                STT_FILE
+    -----------
+    special-sym
+        __executable_start
+        __etext, _etext, etext
+        _data,data
+        _end, end,
+
+        all are virtual-add 
+-----------------------------------------
+symtab collistion
+    old
+        _foo unix
+        _foo_ wodows
+    foo : gcc 
+    -----------
+    c++ name decoration
+        _Z4funci
+        _ZN1CfuncEi
+        _ZN1C2C2funcEi
+    c++filt symbolName
+-----------------------------------------
+c++ and c 
+    -----------
+    extern "C" 
+    {
+        int func(int);
+        int var;
+    }
+
+    or 
+
+    extern int func(int);
+    extern int var;
+    -----------
+    #ifdef __cplusplus
+    extern "C"
+    #endif
+    {
+        void *memset (void *, int, size_t);
+    #ifdef __cplusplus
+    }
+    #endif
+-----------------------------------------

@@ -1,0 +1,8 @@
+00000000 T func1
+00000000 D global
+00000000 D global_init_val
+00000004 C global_uninit_val
+0000001b T main
+         U printf
+00000004 d static_init_val.1832
+00000000 b static_uninit_val.1833
