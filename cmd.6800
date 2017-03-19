@@ -244,3 +244,9 @@ gcc pthread.c -pthread -o pt
 gcc weak_ref.c -o weak_ref 
 gcc weak_ref.c foo.c -o weak_ref
 -----------------------------------------
+two-pass link 
+    space and addr alloc 
+    symbol resolve and re-addr
+----------------------------------------
+ld a.o b.o -e main -o ab
+-----------------------------------------

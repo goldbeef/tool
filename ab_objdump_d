@@ -1,0 +1,50 @@
+
+ab：     文件格式 elf32-i386
+
+
+Disassembly of section .text:
+
+08048094 <main>:
+ 8048094:	55                   	push   %ebp
+ 8048095:	89 e5                	mov    %esp,%ebp
+ 8048097:	83 e4 f0             	and    $0xfffffff0,%esp
+ 804809a:	83 ec 20             	sub    $0x20,%esp
+ 804809d:	c7 44 24 1c 64 00 00 	movl   $0x64,0x1c(%esp)
+ 80480a4:	00 
+ 80480a5:	c7 44 24 04 58 91 04 	movl   $0x8049158,0x4(%esp)
+ 80480ac:	08 
+ 80480ad:	8d 44 24 1c          	lea    0x1c(%esp),%eax
+ 80480b1:	89 04 24             	mov    %eax,(%esp)
+ 80480b4:	e8 07 00 00 00       	call   80480c0 <swap>
+ 80480b9:	b8 00 00 00 00       	mov    $0x0,%eax
+ 80480be:	c9                   	leave  
+ 80480bf:	c3                   	ret    
+
+080480c0 <swap>:
+ 80480c0:	55                   	push   %ebp
+ 80480c1:	89 e5                	mov    %esp,%ebp
+ 80480c3:	53                   	push   %ebx
+ 80480c4:	8b 45 08             	mov    0x8(%ebp),%eax
+ 80480c7:	8b 10                	mov    (%eax),%edx
+ 80480c9:	8b 45 0c             	mov    0xc(%ebp),%eax
+ 80480cc:	8b 08                	mov    (%eax),%ecx
+ 80480ce:	8b 45 08             	mov    0x8(%ebp),%eax
+ 80480d1:	8b 18                	mov    (%eax),%ebx
+ 80480d3:	8b 45 0c             	mov    0xc(%ebp),%eax
+ 80480d6:	8b 00                	mov    (%eax),%eax
+ 80480d8:	31 c3                	xor    %eax,%ebx
+ 80480da:	8b 45 08             	mov    0x8(%ebp),%eax
+ 80480dd:	89 18                	mov    %ebx,(%eax)
+ 80480df:	8b 45 08             	mov    0x8(%ebp),%eax
+ 80480e2:	8b 00                	mov    (%eax),%eax
+ 80480e4:	31 c1                	xor    %eax,%ecx
+ 80480e6:	8b 45 0c             	mov    0xc(%ebp),%eax
+ 80480e9:	89 08                	mov    %ecx,(%eax)
+ 80480eb:	8b 45 0c             	mov    0xc(%ebp),%eax
+ 80480ee:	8b 00                	mov    (%eax),%eax
+ 80480f0:	31 c2                	xor    %eax,%edx
+ 80480f2:	8b 45 08             	mov    0x8(%ebp),%eax
+ 80480f5:	89 10                	mov    %edx,(%eax)
+ 80480f7:	5b                   	pop    %ebx
+ 80480f8:	5d                   	pop    %ebp
+ 80480f9:	c3                   	ret    
