@@ -264,4 +264,26 @@ symbol process in link
     strong-weak: select strong 
     weak-weak: select max-storage
 -----------------------------------------
-
+c++ related 
+    dumplicated code problem:
+        space waste
+        addr easy error
+        instructor run with low effiency
+    dumplicated code generate
+        template
+        extern inline function 
+        virtual function table 
+    dumplicated code remove 
+        gcc 
+            link once
+            .gnu.linkonce.name 
+        visual c++
+            COMDAT
+-----------------------------------------
+function-level
+    priority
+        decrease space-waste
+    type 
+        visual C++: function-level link option
+        gcc: -ffunction-sections, -fdata-sections
+    
