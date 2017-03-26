@@ -250,3 +250,18 @@ two-pass link
 ----------------------------------------
 ld a.o b.o -e main -o ab
 -----------------------------------------
+COMMON block
+    no-init global var
+    weak-symbol store in bss in exec0-elf file, finally 
+    -----------
+    no-common: this will treat weak-symbol as strong-symbol
+        gcc -fno-common
+        int global __attrbute__((nocommon));
+
+-----------------------------------------
+symbol process in link 
+    stong-strong: error 
+    strong-weak: select strong 
+    weak-weak: select max-storage
+-----------------------------------------
+
