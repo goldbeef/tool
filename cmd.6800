@@ -287,6 +287,10 @@ function-level
         visual C++: function-level link option
         gcc: -ffunction-sections, -fdata-sections
 -----------------------------------------
+global constructor and desconstructor
+    .ini section
+    .fini section
+-----------------------------------------
 c++ and ABI
     ABI: application binary interface
     influence factors:
@@ -309,3 +313,49 @@ gcc option
         collect2
             ld wrap
 -----------------------------------------
+link-control
+    command-line args
+        ld -e -o 
+    store link-instructor in obj file 
+        visual c++ 
+    link-control script
+        ld -verbose
+            /usr/lib/ldscripts/elf_i386.x 
+                for elf exec file 
+            /usr/lib/ldscripts/elf_i386.xs 
+                for elf shared lib 
+        visual c++
+            module-definition file 
+        user-define script
+            ld -T link.script
+-----------------------------------------
+gcc -c -fno-builtin tiny_hello_world.c
+ld -static -e nomain -o tiny_hello_world tiny_hello_world.o
+-----------------------------------------
+ld 
+ldscripts
+-----------------------------------------
+gcc -c -fno-builtin tiny_hello_world.c
+ld -static -e nomain -T tiny_hello_world.lds -o tiny_hello_world tiny_hello_world.o
+-----------------------------------------
+ldscripts languge
+    command 
+        ENTRY(symbol)
+        SARTUP(filename)
+        SEARCH_DIR(path)
+        INPUT(file, file)
+        INCLUDE filename 
+        PRROVIDE(symbol)
+        SECTIONS 
+        {
+            secname : { contents }
+        }
+
+        contents 
+            filename(sections)
+-----------------------------------------
+BFD (binary file descriptor library)
+    lib to access obj file 
+sudo apt-get install binutils-dev
+-----------------------------------------
+

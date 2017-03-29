@@ -1,0 +1,14 @@
+共有 6 个节头，从偏移量 0x174 开始：
+
+节头：
+  [Nr] Name              Type            Addr     Off    Size   ES Flg Lk Inf Al
+  [ 0]                   NULL            00000000 000000 000000 00      0   0  0
+  [ 1] .eh_frame         PROGBITS        08048074 000074 00007c 00   A  0   0  4
+  [ 2] tinytext          PROGBITS        080480f0 0000f0 000056 00 WAX  0   0  4
+  [ 3] .shstrtab         STRTAB          00000000 000146 00002e 00      0   0  1
+  [ 4] .symtab           SYMTAB          00000000 000264 000090 10      5   5  4
+  [ 5] .strtab           STRTAB          00000000 0002f4 00002a 00      0   0  1
+Key to Flags:
+  W (write), A (alloc), X (execute), M (merge), S (strings)
+  I (info), L (link order), G (group), T (TLS), E (exclude), x (unknown)
+  O (extra OS processing required) o (OS specific), p (processor specific)
