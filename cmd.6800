@@ -358,4 +358,59 @@ BFD (binary file descriptor library)
     lib to access obj file 
 sudo apt-get install binutils-dev
 -----------------------------------------
-
+virtual-addr space
+    32 os 
+        linux: 
+            os: 1G
+            user: 3G
+        windows:
+            os: 2G
+            user: 2G
+    64 os 
+-----------------------------------------
+PAE:  physical address extenstion
+    1995 Intel hard-ware: 32 --> 36
+    windows-map
+        linux 
+            mmap
+        windows
+            AWE(address windowing extenstion)
+-----------------------------------------
+Load-method
+    overlay:
+        tree-type module 
+        forbidden cross-tree call
+    paging
+        page is unit
+        load-mgr
+            FIFO
+            LRU
+-----------------------------------------
+construction of process 
+    create individual virtual-addr space 
+    read exe-file header, create map relation between virtual-addr space and exe-file
+        linux 
+            VMA: virtual memory area 
+        windows
+            virtual section 
+    set cpu esp to main-entry of exe-file
+-----------------------------------------
+page fault 
+    exe-file  ---VMA---> virtual-addr space  ---MMU----> physical memory
+-----------------------------------------
+elf-link view
+    section 
+elf-load view 
+    segment
+        make simlilar section map to virtual-addr totgather
+        section type 
+            read only
+                
+            read/wite 
+                .bss
+            executale section 
+                .text 
+-----------------------------------------
+readelf -l  file.elf 
+    ELF_
+-----------------------------------------
