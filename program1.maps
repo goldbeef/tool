@@ -1,0 +1,18 @@
+08048000-08049000 r-xp 00000000 08:07 9978222    /home/goldbeef/tool/program1
+08049000-0804a000 r--p 00000000 08:07 9978222    /home/goldbeef/tool/program1
+0804a000-0804b000 rw-p 00001000 08:07 9978222    /home/goldbeef/tool/program1
+b75dc000-b75de000 rw-p 00000000 00:00 0 
+b75de000-b7788000 r-xp 00000000 08:07 8127543    /lib/i386-linux-gnu/libc-2.19.so
+b7788000-b778a000 r--p 001aa000 08:07 8127543    /lib/i386-linux-gnu/libc-2.19.so
+b778a000-b778b000 rw-p 001ac000 08:07 8127543    /lib/i386-linux-gnu/libc-2.19.so
+b778b000-b778e000 rw-p 00000000 00:00 0 
+b77af000-b77b0000 rw-p 00000000 00:00 0 
+b77b0000-b77b1000 r-xp 00000000 08:07 9978223    /home/goldbeef/tool/lib.so
+b77b1000-b77b2000 r--p 00000000 08:07 9978223    /home/goldbeef/tool/lib.so
+b77b2000-b77b3000 rw-p 00001000 08:07 9978223    /home/goldbeef/tool/lib.so
+b77b3000-b77b5000 rw-p 00000000 00:00 0 
+b77b5000-b77b6000 r-xp 00000000 00:00 0          [vdso]
+b77b6000-b77d6000 r-xp 00000000 08:07 8127592    /lib/i386-linux-gnu/ld-2.19.so
+b77d6000-b77d7000 r--p 0001f000 08:07 8127592    /lib/i386-linux-gnu/ld-2.19.so
+b77d7000-b77d8000 rw-p 00020000 08:07 8127592    /lib/i386-linux-gnu/ld-2.19.so
+bf83c000-bf85d000 rw-p 00000000 00:00 0          [stack]

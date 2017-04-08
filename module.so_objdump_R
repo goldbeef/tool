@@ -1,0 +1,18 @@
+
+module.so：     文件格式 elf32-i386
+
+DYNAMIC RELOCATION RECORDS
+OFFSET   TYPE              VALUE 
+00001efc R_386_RELATIVE    *ABS*
+00001f00 R_386_RELATIVE    *ABS*
+00002014 R_386_RELATIVE    *ABS*
+00001fe8 R_386_GLOB_DAT    _ITM_deregisterTMCloneTable
+00001fec R_386_GLOB_DAT    global
+00001ff0 R_386_GLOB_DAT    __cxa_finalize
+00001ff4 R_386_GLOB_DAT    __gmon_start__
+00001ff8 R_386_GLOB_DAT    _Jv_RegisterClasses
+00001ffc R_386_GLOB_DAT    _ITM_registerTMCloneTable
+0000200c R_386_JUMP_SLOT   __cxa_finalize
+00002010 R_386_JUMP_SLOT   __gmon_start__
+
+

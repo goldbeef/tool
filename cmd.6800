@@ -472,5 +472,207 @@ linux kernel loading elf-exc file
     init elf process-evn
     modify the return-addr to elf-main-entry
 -----------------------------------------
+static link 
+    weakness
+        waste of disk and memory 
+        program update/deployment/release
+-----------
+dynamic link
+    make the link-operation to delay in run-time
+    advantage
+        save of disk and memory
+        easy for update/deployment/release
+        easy for program-entend(plug-in)
+        easy for program-compatibility
+    weakness
+        interface-UN-compatibility, known as "DLL HELL"
+-----------------------------------------
+dynamic-link implement
+    seperate program to some individual module, and delay link in run-time
+    -----------
+    linux 
+        dynamic-shared-object (DSO)
+        .so
+            libc.so 
+    windows
+        dynamic-link-library (DLL)
+        .dll
+    -----------
+    dynamic-link tool 
+    lazy-binding
+        5% loss of effiency
+    -----------
+-----------------------------------------
+create .so
+    gcc/g++ -fPIC -shared -o lib.so lib.c
+-----------
+use .so 
+    gcc/g++ -o program1 program1.c ./lib.so
+-----------------------------------------
+ld-2.6.so
+    dynamic-link tool
+    -----------
+    while executing program1
+        dynamic-link tool does linking worl;
+        then elf-exc begin run;
+----------------------------------------- 
+readelf -l ./lib.so 
+    load-addr is 0, 
+    dynamic-shared-object's load-addr is not sure
+-----------------------------------------
+fixed-load-addr method (static-shared-libray)
+    addr-collistion
+    update problem
+    -----------
+    only very old OS still use 
+        UNIX SYSTEM V release 3.2
+        old linux SYSTEM (a.out format)
+        BSD/OS derivative of 4.4BSD
+    -----------
+-----------------------------------------
+static-link
+    link-time-relocation
+-----------
+dynamic-load
+    linux 
+        load-time-relocation
+            can not resolve shared-code between processes
+            gcc support by, -shared
+    -----------        
+    windows
+        rebaseing
+-----------
+地址无关代码
+    模块内部函数调用，跳转
+        相对跳转和调用
+    模块内部数据访问
+        相对地址访问
+            任意一条指令和模块内的数据都是相对的
+    模块外部函数调用，跳转 
+        全局偏移表 GOT（global-offset-table）
+        var --> addr 
+    模块外部数据访问
+        全局偏移表 GOT（global-offset-table）
+        function --> addr 
+-----------------------------------------
+objdump -h elf-file 
+objdump -R elf.so
+-----------------------------------------
+g++/gcc 
+    -fPIC 
+        不同平台没有限制
+    -fpic 
+        不同的平台下有限制
+-----------------------------------------
+判断DSO是否是PIC 
+    readelf -d foo.so |grep TEXTREL
+    TEXTREL
+        代码段重定位地址
+-----------------------------------------
+PIC/pie 
+    代码无关可执行文件 (position independent executable)
+    gcc/g++ 
+        -fPIE, -fpie
+-----------------------------------------
+共享模块的全局变量
+    编译器无法决定是模块内部的引用，还是跨模块的引用
+    ELF共享库在编译的时候，默认把定义在模块内部的全局变量当作定义在其他模块的全局变量，通过GOT访问
+----------------------------------------- 
+共享模块数据段地址的无关性 
+    load-time-relocation: R_386_RELATIVE
+-----------------------------------------
+gcc -shared
+    weakness
+        wase of memory
+    advantage
+        fast run-speed
+-----------
+gcc -shared -fPIC
+    weakness
+        5% loss of effiency
+    advantage
+        save of memory
+-----------
+by default, gcc use -fPIC 
+-----------------------------------------
+dynamic-link 
+    weakness
+        global-var/static-var/function using GOT to get address 
+        link in run-time 
+-----------
+延迟绑定
+    lazy-binding: 函数第一次调用才绑定
+    ELF 使用 PLT(procedure linkage table) 实现
+    -----------
+    PLT 
+        -----------
+        000003f0 <bar@plt-0x10>:
+         3f0:	ff b3 04 00 00 00    	pushl  0x4(%ebx)
+         3f6:	ff a3 08 00 00 00    	jmp    *0x8(%ebx)
+         3fc:	00 00                	add    %al,(%eax)
+            ...
 
-        
+        00000400 <bar@plt>:
+         400:	ff a3 0c 00 00 00    	jmp    *0xc(%ebx)
+         406:	68 00 00 00 00       	push   $0x0
+         40b:	e9 e0 ff ff ff       	jmp    3f0 <_init+0x30>
+        -----------
+        .got 
+            for global var 
+        .got.plt 
+            for function call 
+        -----------
+-----------------------------------------
+linux 
+    dynamic-linker
+        ld.so 
+        操作系统转载完可执行文件后;动态链接器拿到控制权限，完成链接操作；交还控制权限给elf执行程序
+    -----------------------------------------
+    .interp 
+        objdump -s |grep '\.interp' 
+        readelf -A
+    -----------------------------------------
+-----------------------------------------
+显示运行时链接
+    explicit run-time linking 
+    dynamic-loading-library (动态装载库)
+    advantage
+        flexible
+        plug-in
+    -----------
+    <dlfcn.h>
+        implement in /lib/libdl.so.2
+    api
+        dlopen
+            path
+                LD_LIBRATY_PATH
+                /etc/ld.so.cache 
+                /lib, /usr/lib 
+            flag
+                RTLD_LAZY
+                    PLT 
+                RTLD_NOW
+                RTLD_GLOBAL
+            .init 
+        -----------
+        dlsym
+            handle 
+            symbol 
+            
+            return 
+                var addr 
+                function addr 
+                const 
+                    objdump -t elf-file |grep ABS
+            symbol priority
+                load-ordering
+                dependency-ordering
+        -----------
+        dlerror 
+            null 
+                succ 
+        -----------
+        dlclose
+-----------------------------------------
+
+

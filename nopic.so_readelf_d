@@ -1,0 +1,28 @@
+
+Dynamic section at offset 0xf04 contains 25 entries:
+  标记        类型                         名称/值
+ 0x00000001 (NEEDED)                     共享库：[libc.so.6]
+ 0x0000000c (INIT)                       0x3c8
+ 0x0000000d (FINI)                       0x578
+ 0x00000019 (INIT_ARRAY)                 0x1ef8
+ 0x0000001b (INIT_ARRAYSZ)               4 (bytes)
+ 0x0000001a (FINI_ARRAY)                 0x1efc
+ 0x0000001c (FINI_ARRAYSZ)               4 (bytes)
+ 0x6ffffef5 (GNU_HASH)                   0x138
+ 0x00000005 (STRTAB)                     0x268
+ 0x00000006 (SYMTAB)                     0x178
+ 0x0000000a (STRSZ)                      177 (bytes)
+ 0x0000000b (SYMENT)                     16 (bytes)
+ 0x00000003 (PLTGOT)                     0x2000
+ 0x00000002 (PLTRELSZ)                   16 (bytes)
+ 0x00000014 (PLTREL)                     REL
+ 0x00000017 (JMPREL)                     0x3b8
+ 0x00000011 (REL)                        0x358
+ 0x00000012 (RELSZ)                      96 (bytes)
+ 0x00000013 (RELENT)                     8 (bytes)
+ 0x00000016 (TEXTREL)                    0x0
+ 0x6ffffffe (VERNEED)                    0x338
+ 0x6fffffff (VERNEEDNUM)                 1
+ 0x6ffffff0 (VERSYM)                     0x31a
+ 0x6ffffffa (RELCOUNT)                   4
+ 0x00000000 (NULL)                       0x0
