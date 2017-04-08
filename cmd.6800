@@ -411,6 +411,66 @@ elf-load view
             executale section 
                 .text 
 -----------------------------------------
-readelf -l  file.elf 
-    ELF_
+program header table （程序表头）
+    used for segment dispritation
+    ELF23_Phdr
+    readelf -l  file.elf 
+
 -----------------------------------------
+process heap/stack
+    presented by VMA in virtual-addr space 
+    cat /proc/pid/maps 
+        VMA authority:
+            R,
+            W
+            X,
+            P(copy-on-write)
+    anonymous VMA (virtual-memory-area)
+        for heap and stack 
+    vdso (VMA)
+        for kernel
+-----------------------------------------
+type of VMA 
+    code VMA 
+        RX
+    data VMA
+        RWX
+    heap VMA
+        RWX
+        anonymous
+        extended to low-addr
+    stack VMA
+        RW
+        anonymous
+        extended to high-addr 
+-----------------------------------------
+virtual-addr from low to high 
+    CODE-VMA, DTAT-VMA, HEAP-VMA, STACK-VMA, OS 
+-----------------------------------------
+max-heap-size for 32-bit OS 
+    linux 
+        user-space: 3G 
+        max-heap: 2.9G
+    windows
+        user-space: 2G 
+        max-heap: 1.5G
+    -----------
+    factors which influence heap-size 
+        OS type;
+        elf-exc file size;
+        so lib;
+        and ...
+-----------------------------------------
+segment allign
+    unix
+        let neighbour segment share same Page for saving memory
+-----------------------------------------
+linux kernel loading elf-exc file 
+    check elf-magic
+    check .interp, set dynamic-lib path 
+    elf-exc maping, by program-header
+    init elf process-evn
+    modify the return-addr to elf-main-entry
+-----------------------------------------
+
+        

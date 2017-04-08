@@ -1,0 +1,14 @@
+08048000-08049000 r-xp 00000000 08:07 9978209    /home/goldbeef/tool/section_mapping
+08049000-0804a000 r--p 00000000 08:07 9978209    /home/goldbeef/tool/section_mapping
+0804a000-0804b000 rw-p 00001000 08:07 9978209    /home/goldbeef/tool/section_mapping
+b74c5000-b75c7000 rw-p 00000000 00:00 0 
+b75c7000-b7771000 r-xp 00000000 08:07 8127543    /lib/i386-linux-gnu/libc-2.19.so
+b7771000-b7773000 r--p 001aa000 08:07 8127543    /lib/i386-linux-gnu/libc-2.19.so
+b7773000-b7774000 rw-p 001ac000 08:07 8127543    /lib/i386-linux-gnu/libc-2.19.so
+b7774000-b7777000 rw-p 00000000 00:00 0 
+b7799000-b779b000 rw-p 00000000 00:00 0 
+b779b000-b779c000 r-xp 00000000 00:00 0          [vdso]
+b779c000-b77bc000 r-xp 00000000 08:07 8127592    /lib/i386-linux-gnu/ld-2.19.so
+b77bc000-b77bd000 r--p 0001f000 08:07 8127592    /lib/i386-linux-gnu/ld-2.19.so
+b77bd000-b77be000 rw-p 00020000 08:07 8127592    /lib/i386-linux-gnu/ld-2.19.so
+bf9da000-bfadc000 rw-p 00000000 00:00 0          [stack]
