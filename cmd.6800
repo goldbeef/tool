@@ -675,4 +675,61 @@ linux
         dlclose
 -----------------------------------------
 
+shared library: 就是ELF共享对象
+-----------------------------------------
+共享库的更新
+    兼容更新
+    不兼容更新
+        改变的原有的接口(ABI, application binary interface)
+        for c languge
+            导出函数语义变化
+            导出函数删除
+            导出数据结构变化
+            导出函数的接口发生变化
+        for c++ languge
+            虚函数表
+            模板
+            多重继承
+-----------------------------------------
+共享库版本命名
+    libname.x.y.z
+        x
+            主版本号, 重大升级，不同主版本不兼容
+        y
+            次版本号， 增加新的符号，原有符号不变
+        z 
+            发布版本号, bug修复/性能改善
+-----------------------------------------
+SO-NAME
+    libname.so.x
+    -----------
+    soft link 
+        libname.so.x ----> libname.so.x.y.z
+        便于升级
+    -----------
+    SO-NAME 
+        exist in elf-file .dynamic
+    -----------
+    ldconfig 
+        creat soft link of SO-NAME 
+    -----------
+    link name 
+        gcc/g++ -lname
+                -static 
+                    libc.a
+                -Bdynamic
+                    libname.so.x
+    -----------
+-----------------------------------------
+次版本交会问题(minor-version rendezvous problem)
+    use low-minor-version
+        warning strategy
+            may occure error while running 
+        stop strategy 
+            may wrongly stop elf-exc
+-----------
+基于符号的版本机制
+    每个导入和导出的符号都关联一个版本号 (libname.x.y.so)
+    solaris
+        ld链接器引入 版本机制(versioning) 和范围机制(scoping)
 
