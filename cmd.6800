@@ -732,4 +732,79 @@ SO-NAME
     每个导入和导出的符号都关联一个版本号 (libname.x.y.so)
     solaris
         ld链接器引入 版本机制(versioning) 和范围机制(scoping)
+-----------------------------------------
+memeory layout
+
+linux process-addr-space layout
+    reserved
+    readonly sections(.init, .rodata, .text)
+    read/write sections(.data, .bss)
+    heap (down-addr-extended)
+    unused
+    dynamic-lib
+    unused
+    static(up-addr-extended)
+    kernel space
+-----------
+segment fault 
+    null ptr;
+    no-init ptr;
+-----------
+stack 
+    data struct(computer science)
+    dynamic memory area (computer syetem)
+    function-frame(operate SYSTEM)
+-----------
+stack-frame (activate-record)
+    function-param, function-retaddr
+    temp var 
+    saved context
+    -----------
+    stack-frame layout
+            param
+            retaddr
+    ebp-->  old ebp
+            saved registers
+            local var 
+            other data
+    esp-->
+
+-----------
+ebp (frame pointer)
+    gcc option: -fomit-frame-pointer
+esp (top stack)
+-----------
+i386 function's standard instructions
+    get-in-function
+        push ebp 
+        mov ebp, esp 
+        sub esp, x
+        [push reg1]
+        ...
+        [push regn]
+    get-out-function
+        [pop regn]
+        ...
+        [pop regn1]
+        mov esp,ebp 
+        pop ebp 
+        ret 
+-----------------------------------------
+调用惯例(calling-convention)
+    params push-order and method 
+    stack maintenance
+    name-mangling(名称修饰)
+-----------
+c languge's default calling-convention
+    cdecl
+        params is pushed, from right to left 
+        出栈方是函数的调用方
+        名字修饰：_function
+-----------
+other calling-convention
+    stdcall
+    fastcall
+    pascal
+    thiscall( for c++ languge)
+-----------------------------------------
 
