@@ -807,4 +807,46 @@ other calling-convention
     pascal
     thiscall( for c++ languge)
 -----------------------------------------
+function-return trans
+    eax,
+    eax, edx
+    eax (for large-buff-ret)
+        store buff-addr
+-----------------------------------------
+linux process heap-manage
+    system api
+        brk
+            sbrk
+        mmap
+            paging as unit 
+-----------
+malloc (glibc)
+    <=128k, alloc memeory form cur heap space 
+    >128k, mmap (anonymous)
+-----------
+heap-manage algorithm
+    空链表(free list)
+        weakness
+            once link-list is destroied, all gone 
+    位图(bit map)
+        head 
+        body
+        free 
+        -----------
+        priority
+            fast speed 
+            stable 
+        weakness
+            memory fragment waste
+    对象池
+        fix-unit
+        -----------
+        can use free-list, bit-map
+glibc heap-manage algorithm
+    <64,对象池
+    64< ... < 512, 
+    512< ...<128k, 最佳适配
+    >128, mmap 
+-----------------------------------------
 
+-----------------------------------------
