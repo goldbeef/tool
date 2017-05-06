@@ -928,4 +928,40 @@ gcc platform-related file
         math operation
     libgcc_eh.a
         exception operation 
+-----------------------------------------
+ctr multi-thread problem
+    thread access authority
+        private
+            stack 
+            TLS
+            registers
+        public 
+            global-var
+            static-var
+            heap-data 
+            ...
+    multi-thread-crt
+        thread-operation lib 
+            pthrea_XXXXX
+        thread-safe crt 
+            errno
+    multi-thread-crt update 
+        use TLS 
+        use LOCK 
+        change funcion-interface
+            strtok --> strtok_r
+            make thread-safe
+-----------------------------------------
+TLS(thread-local-storage) implement
+    TEB(thread-environment-block)
+        TLS array
+    -----------
+    implicit use 
+        __thread int num; //simple to use
+    explicit use
+        pthread_key_create
+        pthread_getspecific
+        pthread_setspecific
+        pthread_key_delete
+        //complex to use
 
