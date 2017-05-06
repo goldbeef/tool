@@ -848,5 +848,84 @@ glibc heap-manage algorithm
     512< ...<128k, 最佳适配
     >128, mmap 
 -----------------------------------------
+glibc entry-func
+    -----------
+    glibc source code
+        libc/sysdeps/i386/elf/Start.s
+    -----------
+    void _start()
+    {
+        %ebp = 0;
+        int argc = pop_from_stack;
+        char* argv[] = top_of_stack;
+        __libc_start_main(main, argc, argv,
+                            __libc_csu_init, __libc_csu_fini, 
+                            edx, top_of_stack);
+    }
+    //stack 
+    // ---------statck_extend----------->
+    // 0|envn|0|...|env0|0|argn|...|arg0|argc|
 
+    __libc_start_main
+    {
+        //get argc, argv, env 
+        // do init 
+        // do main 
+        // do exit
+    }
 -----------------------------------------
+runtime-library
+    crt(c runtime-library): function 
+        star,exit
+        standard method 
+        i/o
+        heap
+        languge
+        debug 
+-----------------------------------------
+c standard library
+    standard INPUT/OUTPUT
+    file operation 
+    character operation 
+    string operation
+    math operation
+    string operation
+    formt convert 
+    time 
+    assret 
+    const var 
+    variable-param
+    no-local-jump 
+    -----------
+    variable-param
+        va_list
+        va_start
+        va_arg 
+        va_end
+        -----------
+        sum(num, ....);
+        -----------
+    variable-macros 
+        #define LOG_DEBUT(args...) fprintf(stdout, ##args)
+        LOG_DEBUT("LOG_DEBUT, var[%d], msg[%s]\n", 1, "hello");
+    -----------
+    no-local-jump
+        setjmp
+        longjmp
+-----------------------------------------
+glibc startup file 
+    crt0 --> crt1
+        for __libc_start_main
+    crti.o
+        for .ini, .fini
+    crtn.o
+        for .ini, .fini 
+-----------
+gcc platform-related file 
+    crtbeginT.o, crtend.o 
+        for c++ global constructor/desconstructor
+    libgcc.a
+        math operation
+    libgcc_eh.a
+        exception operation 
+
