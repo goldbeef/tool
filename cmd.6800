@@ -986,3 +986,40 @@ glibc global-construct
     global-construct is crt-related
         NOT user gcc --nonstartfiles or --nostdlib
 -----------------------------------------
+linux system call 
+    -----------
+    interrupt 0x80
+    sys_XXX
+    -----------
+    privilege-level
+        user-mode
+        kernel-mode
+    -----------
+    interrupt
+        poll
+        notify 
+        -----------
+        interrupt-verctor-table
+        interrupt-servervice-routine
+        -----------
+        process
+            user-mode --> interruption occured ------------------------------------------------------------> next instructions
+                                |                                                                                |
+            kernel-mode         --> interrupt-verctor-table -->interrupt-servervice-routine -->system call  table|
+    -----------
+-----------------------------------------
+system call implement
+    old way 
+        trigger interrupt
+            frok --> _syscall0(pid_t, fork) 
+        stack switch
+            between user-mode and kernel-mode
+        interrupt-servervice-routine 
+            system-call-table 
+    new way
+        linux-gate.so
+        ldd xxx|grep vdso
+        -----------
+-----------------------------------------
+    /proc/pid/maps
+    /proc/pid/mem
