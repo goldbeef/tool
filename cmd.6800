@@ -964,4 +964,25 @@ TLS(thread-local-storage) implement
         pthread_setspecific
         pthread_key_delete
         //complex to use
-
+-----------------------------------------
+glibc global-construct
+    -----------
+    _start -> __libc_start_main --> __libc_csu_init -->__init --> __do_global_ctors_aux
+        __CTOR_LIST__
+            function-ptr array 
+            -----------
+            ctrbegin.o: .ctors
+            a.o: .ctors
+            b.o: .ctors
+            ctrend.o: .ctors
+            ----->merge to elf-exc file's .ctors
+    -----------
+    other way to call before main 
+        typedef void (*ctor_t) (void);
+        ctor_t __attribute__((section (".ctors"))) my_init_init_p = &my_init;
+        -----------
+        void my_init(void) __attribute__((constructor));
+    ----------
+    global-construct is crt-related
+        NOT user gcc --nonstartfiles or --nostdlib
+-----------------------------------------
