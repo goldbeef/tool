@@ -1023,3 +1023,7 @@ system call implement
 -----------------------------------------
     /proc/pid/maps
     /proc/pid/mem
+-----------------------------------------
+malloc 
+    brk/sbrk
+    mmap
