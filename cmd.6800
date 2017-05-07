@@ -984,7 +984,7 @@ glibc global-construct
         void my_init(void) __attribute__((constructor));
     ----------
     global-construct is crt-related
-        NOT user gcc --nonstartfiles or --nostdlib
+        NOT user gcc -nonstartfiles or -nostdlib
 -----------------------------------------
 linux system call 
     -----------
